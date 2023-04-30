@@ -9,4 +9,4 @@ class MopeRegexp {
     }
 }
 
-module.exports = {};
+module.exports = MopeRegexp;
