@@ -1,0 +1,17 @@
+{
+  "name": "mope-varriable-scrapper",
+  "version": "1.0.0",
+  "description": "A script to automatically get important mope.io variables and functions.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RussianMopeRU/mope-varriable-scrapper.git"
+  },
+  "author": "RussianMope",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RussianMopeRU/mope-varriable-scrapper/issues"
+  },
+  "homepage": "https://github.com/RussianMopeRU/mope-varriable-scrapper#readme"
+}
