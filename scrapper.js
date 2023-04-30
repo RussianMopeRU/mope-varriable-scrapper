@@ -6,6 +6,14 @@ axios.interceptors.request.use((config) => {
     return config;
 });
 
+const getClient = () => {
+    return new Promise((resolve, reject) => {
+      axios.get(`https://mope.io/client.js`)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error));
+    });
+  };
 
-
-module.exports = {};
+module.exports = {
+    getClient
+};
