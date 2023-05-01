@@ -1,7 +1,6 @@
 const MopeRegexp = require('./MopeRegexp.js');
 
 let filterMopeScript = (script) => {
-    // Gets list of all varriables returned in richPresences, removes richPresences from there
     let richPresence = new MopeRegexp(script).get(/richPresences\((.*?)}/g)[0].slice(`richPresences(`.length);
     let richPresencesObj = new MopeRegexp(richPresence).get(/:(.*?)[,}]/g);
     let richPresences = [];
@@ -26,9 +25,17 @@ let filterMopeScript = (script) => {
     let camy = new MopeRegexp(cam).get(/=0x0,(.*?)=/)[1];
 
     let pvpArenaObj = new MopeRegexp(new MopeRegexp(new MopeRegexp(script).get(/:default:return(.*?)=null/)[0]).get(/!\[](.*?)=null/)[1].slice(`,`.length)).get(/(?<=,)_0x([^\W_]+)(?=,|$)/)[0]; 
-    
-    console.log(pvpArenaObj)
-    
+    let isInArena = new MopeRegexp(script).get(/'],!!\[]\);(.*?)&&\(\$bus\['/)[1]
+
+    let dangerAniTypes = new MopeRegexp(script).get(/:null;},(.*?)=Array/)[1]
+    let waterBarPerc_n = new MopeRegexp(new MopeRegexp(script).get(/\)\);};_(.*?)\);const _/)[1]).get(/\((?:.........)/)[0].slice(`(`.length);
+    let graphicsType = new MopeRegexp(new MopeRegexp(script).get(/\)\?parseInt\(_(.*?),_/)[1]).get(/:(?:.........)/)[0].slice(`:`.length);
+
+    let playerName = new MopeRegexp(script).get(/=>{if\(typeof (.*?)!==/)[1];
+    let pixelRat = new MopeRegexp(new MopeRegexp(script).get(/:0x3}\);}function(.*?)\*0x3/)[1]).get(/=(?:.........)/)[0].slice(`=`.length);
+    let interfS = new MopeRegexp(script).get(/'];return;}}(.*?)=/)[1];
+    let drawGame = new MopeRegexp(script).get(/requestAnimationFrame\((.*?)\)/)[1];
+
     let allVarriables = {
         ani: richPresences[0],
         species: richPresences[1],
@@ -54,10 +61,17 @@ let filterMopeScript = (script) => {
         camy: camy,
 
         pvpArenaObj: pvpArenaObj,
-        
-    };
+        isInArena: isInArena,
 
-    console.log(allVarriables)
+        dangerAniTypes: dangerAniTypes,
+        waterBarPerc_n: waterBarPerc_n,
+        
+        graphicsType: graphicsType,
+        playerName: playerName,
+        pixelRat: pixelRat,
+        interfS: interfS,
+        drawGame: drawGame
+    };
 
     return allVarriables;
 };
